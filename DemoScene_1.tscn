@@ -35,7 +35,6 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect5/StaticBody2D"]
 position = Vector2( 512.5, 20 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="ColorRect2" type="ColorRect" parent="."]
@@ -84,4 +83,14 @@ position = Vector2( 515, 20 )
 shape = SubResource( 1 )
 
 [node name="Player_cube_demo" parent="." instance=ExtResource( 1 )]
-position = Vector2( 480, 528 )
+position = Vector2( 480, 464 )
+
+[node name="spawn_position" type="Position2D" parent="."]
+position = Vector2( 480, 464 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( 784, 448, 824, 416, 944, 400, 976, 512, 856, 512, 768, 544 )
+
+[connection signal="body_entered" from="Area2D" to="Player_cube_demo" method="_on_Area2D_body_entered"]
